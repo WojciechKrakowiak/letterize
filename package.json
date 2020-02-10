@@ -1,8 +1,10 @@
 {
-  "name": "letterize",
+  "name": "letterize.js",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Wrap single letters in HTML nodes.",
+  "main": "lib/letterize.js",
+  "umd:main": "lib/letterize.min.js",
+  "module": "lib/letterize.es.js",
   "directories": {
     "test": "test"
   },
@@ -10,14 +12,20 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "babel-loader": "^8.0.6",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "eslint": "^6.8.0",
+    "rollup": "^1.31.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-filesize": "^6.2.1",
+    "rollup-plugin-license": "^0.13.0",
+    "rollup-plugin-progress": "^1.1.1",
+    "rollup-plugin-uglify": "^6.0.4"
   },
   "scripts": {
-    "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "rollup --config"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Wojciech Krakowiak <wojciech@wkropce.com>",
+  "license": "MIT"
 }
