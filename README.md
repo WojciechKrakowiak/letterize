@@ -1,35 +1,45 @@
 # Letterize.js
 
-A javascript front-end library for wrapping single letters into HTML nodes (i.e. <span></span>). Made to make text animations easier and simplify letter by letter animation with libraries like [Anime.js](https://github.com/juliangarnier/anime/).
+A javascript front-end library for wrapping single letters into HTML nodes (i.e. `<span></span>`). Made to make text animations easier and simplify letter by letter animation with libraries like [Anime.js](https://github.com/juliangarnier/anime/).
 
 ## Usage
 
-var example = new Letterize({targets: ".selector", options...});
+```var example = new Letterize({targets: ".selector", options...});
+
+```
 
 ## Options
 
-1. targets: _String **required**_
+### targets: _String **required**_
 
-⋅⋅⋅A javascript selector. All letters inside these elements will be wrappet in HTML nodes (by default in <span></span>)
+A javascript selector. All letters inside these elements will be wrappet in HTML nodes (by default in `<span></span>`)
 
-⋅⋅⋅ _examples:_
-⋅⋅⋅targets: "#sampleId"
-⋅⋅⋅targets: ".sampleClass"
-⋅⋅⋅targets: "h2"
+_examples:_
 
-2. wrapper: _String (default: "span")_
+```targets: "#sampleId"
+targets: ".sampleClass"
+targets: "h2"
+```
 
-⋅⋅⋅A html tag name that we want to wrap elements into. Default value is "span"
+### wrapper: _String (default: "span")_
 
-⋅⋅⋅ _example:_
-⋅⋅⋅wrapper: "div"
+A html tag name that we want to wrap elements into. Default value is "span"
 
-3. className: _String_
+_example:_
 
-⋅⋅⋅A class name that has to be set on all letters wrapper element.
+```wrapper: "div"
 
-⋅⋅⋅ _example:_
-⋅⋅⋅className: "letter"
+```
+
+### className: _String_
+
+A class name that has to be set on all letters wrapper element.
+
+_example:_
+
+```className: "letter"
+
+```
 
 ## Object properties
 
