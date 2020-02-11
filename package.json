@@ -1,10 +1,8 @@
 {
   "name": "letterize.js",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "description": "Wrap single letters in HTML nodes.",
-  "main": "lib/letterize.js",
-  "umd:main": "lib/letterize.min.js",
-  "module": "lib/letterize.es.js",
+  "main": "lib/letterize.min.js",
   "directories": {
     "test": "test"
   },
