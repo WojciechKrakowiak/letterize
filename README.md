@@ -10,43 +10,45 @@ var example = new Letterize({targets: ".selector", options...});
 
 ## Options
 
-### targets: _String **required**_
+### targets: _(String) **required**_
 
 A javascript selector. All letters inside these elements will be wrappet in HTML nodes (by default in `<span></span>`)
 
 _examples:_
 
 ```javascript
-targets: "#sampleId";
-targets: ".sampleClass";
-targets: "h2";
+targets: "#sampleId",
+targets: ".sampleClass",
+targets: "h2",
+targets: document.querySelector("h2"),
+targets: document.getElementById("#sampleId")
 ```
 
-### wrapper: _String (default: "span")_
+### wrapper: _(String) (default: "span")_
 
 A html tag name that we want to wrap elements into. Default value is "span"
 
 _example:_
 
 ```javascript
-wrapper: "div";
+wrapper: "div",
 ```
 
-### className: _String_
+### className: _(String)_
 
 A class name that has to be set on all letters wrapper element.
 
 _example:_
 
 ```javascript
-className: "letter";
+className: "letter",
 ```
 
 ## Object properties
 
-`Letterize.targets` _Array_ – returns an array of targets
+`Letterize.targets` _(Array, NodeList, HTMLCollection, HTMLElement, String)_ – returns an array of targets
 
-`Letterize.wrapper` _String_ – returns a name of wrapper option
+`Letterize.wrapper` _(String)_ – returns a name of wrapper option
 
 `Letterize.className` _String_ – returns a class name set on letters wrappers
 
@@ -62,6 +64,5 @@ className: "letter";
 
 ## TODOs
 
-- Make "targets" option accept html element object or array of html objects as well
 - Provide some examples with "list" and "listAll" properties
 - Provide some use cases (i.e. with anime.js library)
