@@ -17,6 +17,7 @@ const deconstructText = (node, wrapper, className) => {
 };
 
 const deconstructObjects = (
+  targets,
   target,
   wrapper,
   className,
@@ -37,20 +38,24 @@ const deconstructObjects = (
       let listPart;
       switch (nodeList[j].nodeType) {
         case 1:
-          deconstructObjects(
-            nodeList[j],
-            wrapper,
-            className,
-            list,
-            listAll,
-            i,
-            id
-          );
+          if (Array.prototype.indexOf.call(targets, nodeList[j]) === -1) {
+            // Check if current nodeList[j] wasn't deconstructed (it can happen if target node is in another target node).
+            deconstructObjects(
+              targets,
+              nodeList[j],
+              wrapper,
+              className,
+              list,
+              listAll,
+              i,
+              id
+            );
+          }
           break;
         case 3:
           listPart = deconstructText(nodeList[j], wrapper, className);
-          listAll = listAll.concat(listPart);
-          list[i] = list[i].concat(listPart);
+          listAll.push(...listPart);
+          list[i].push(...listPart);
           break;
       }
     }
@@ -59,36 +64,40 @@ const deconstructObjects = (
 
 export default class Letterize {
   constructor(params = {}) {
-    if (!params.targets || !params.targets.length) {
-      console.error("Letterize: targets not specified.");
-      return;
+    if (
+      NodeList.prototype.isPrototypeOf(params.targets) ||
+      HTMLCollection.prototype.isPrototypeOf(params.targets) ||
+      Array.isArray(params.targets)
+    ) {
+      this.targets = params.targets;
+    } else if (HTMLElement.prototype.isPrototypeOf(params.targets)) {
+      this.targets = [params.targets];
+    } else if (typeof params.targets === "string") {
+      this.targets = document.querySelectorAll(params.targets);
+    }
+
+    const targetsLength = this.targets.length;
+    console.log(this.targets);
+    console.log(this.targets.length);
+
+    if (!this.targets.length) {
+      console.error(
+        `Letterize: targets '${this.targets}' not found or not specified`
+      );
+      return false;
     }
 
     Letterize.numInstances = (Letterize.numInstances || 0) + 1;
-
-    this.targets = params.targets;
     this.wrapper = params.wrapper || "span";
     this.className = params.className;
     this.id = Letterize.numInstances;
-    console.log(this.id);
-
     this.list = [];
     this.listAll = [];
-
-    const targetsLength = this.targets.length;
-
-    if (typeof this.targets === "string") {
-      this.targets = document.querySelectorAll(this.targets);
-    }
-
-    if (!this.targets.length) {
-      console.error(`Letterize: targets '${this.targets}' not found`);
-      return;
-    }
 
     for (let i = 0; i < targetsLength; i++) {
       this.list[i] = [];
       deconstructObjects(
+        this.targets,
         this.targets[i],
         this.wrapper,
         this.className,
@@ -98,5 +107,20 @@ export default class Letterize {
         this.id
       );
     }
+  }
+
+  deletterize() {
+    const listLength = this.listAll.length;
+    for (let i = 0; i < listLength; i++) {
+      this.listAll[i].before(...this.listAll[i].childNodes);
+      this.listAll[i].remove();
+    }
+    this.targets = undefined;
+    this.wrapper = undefined;
+    this.className = undefined;
+    this.list = undefined;
+    this.listAll = undefined;
+    this.id = undefined;
+    this.deletterize = undefined;
   }
 }
