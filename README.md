@@ -2,6 +2,20 @@
 
 A javascript front-end library for wrapping single letters into HTML nodes (i.e. `<span></span>`). Made to make text animations easier and simplify letter by letter animation with libraries like [Anime.js](https://github.com/juliangarnier/anime/).
 
+## Installation
+
+Download /lib/letterize.min.js file into your project and include it in your HTML document:
+
+```html
+<script src="/path/to/letterize.min.js"></script>
+```
+
+or use cdn version:
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/WojciechWKROPCE/letterize-js/lib/letterize.min.js"></script>
+```
+
 ## Usage
 
 ```javascript
