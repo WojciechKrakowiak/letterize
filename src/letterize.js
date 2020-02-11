@@ -9,7 +9,10 @@ const deconstructText = (node, wrapper, className) => {
   for (let n = 0; n < textLength; n++) {
     const letterNode = document.createElement(wrapper);
     if (className && className.length) letterNode.classList.add(className);
-    letterNode.textContent = text[n];
+
+    // Replace spaces with &nbsp; so it has width after letterizing
+    letterNode.textContent = text[n] === " " ? "\xa0" : text[n];
+
     node.before(letterNode);
     list.push(letterNode);
   }
