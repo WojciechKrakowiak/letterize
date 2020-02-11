@@ -77,8 +77,6 @@ export default class Letterize {
     }
 
     const targetsLength = this.targets.length;
-    console.log(this.targets);
-    console.log(this.targets.length);
 
     if (!this.targets.length) {
       console.error(
