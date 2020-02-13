@@ -4,14 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "./assets/css/main.css" | relative_url }}">
     <link
       href="https://fonts.googleapis.com/css?family=Khula:800&display=swap&subset=latin-ext"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/gh/WojciechWKROPCE/letterize-js@latest/lib/letterize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
-   <script src="/assets/js/highlight.pack.js"></script>
+   <script src="{{ "./assets/js/highlight.pack.js" | relative_url }}"></script>
    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
