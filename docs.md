@@ -1,6 +1,7 @@
 ---
 layout: markdown
 title: "Documentation"
+permalink: /docs/
 ---
 
 A javascript front-end library for wrapping single letters into HTML nodes (i.e. `<span></span>`). Made to make text animations easier and simplify letter by letter animation with libraries like [Anime.js](https://github.com/juliangarnier/anime/).
