@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <link
+      href="https://fonts.googleapis.com/css?family=Khula:800&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/WojciechWKROPCE/letterize-js@latest/lib/letterize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+   <script src="/assets/js/highlight.pack.js"></script>
+   <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/examples">Examples</a>
+      <a href="/docs">Docs</a>
+    </nav>
+    <style>
+  h2 {
+    margin-top: 48px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h3 {
+    margin-top: 24px;
+  }
+
+  .highlight code {
+    padding: 12px 24px;
+    border-radius: 10px;
+  }
+
+  .highlight {
+    margin-bottom: 48px;
+  }
+
+  em {
+    color: #AAA;
+  }
+
+  code.highlighter-rouge {
+    background-color: #eee;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 4px;
+  }
+</style>
+  <header class="header">
+  <div class="text-center">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+    <div class="container">
+    {{ content }}
+      </div>
+        <footer>
+      Made with <span style="color: #888;">&#9829;</span>  by Wojciech Krakowiak
+    </footer>
+    <script>
+      var buttons = new Letterize({
+        targets: ".button"
+      });
+      var buttonsLength = buttons.targets.length;
+      for (var i = 0; i < buttonsLength; i++) {
+          ( function(){
+          var n = i;
+          var animation;
+          buttons.targets[n].addEventListener("mouseover", function() {
+            animation = anime({
+              targets: buttons.list[n],
+              translateX: function() { return anime.random(-1, 1)},
+              translateY: function() { return anime.random(-1, 1)},
+              duration: function() { return anime.random(10, 50)},
+              direction: 'alternate',
+              loop: true,
+              easing: 'linear'
+            });
+
+            
+          });
+          buttons.targets[n].addEventListener("mouseleave", function() {
+              anime.remove(buttons.list[n]);
+              animation = anime({
+                targets: buttons.list[n],
+                translateX: 0,
+                translateY: 0,
+                duration: 0,
+                loop: false
+              });
+            })
+      }()); 
+      }
+
+    </script>
+  </body>
+</html>

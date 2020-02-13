@@ -1,0 +1,167 @@
+---
+layout: default
+title: "Support your letters animation"
+---
+
+<header class="header header-home">
+  <div class="text-center">
+    <h1>Letterize.js</h1>
+    <div>Prepare your text for animation with a single line of code.</div>
+    <div class="header__buttons">
+      <a href="/documentation" class="button button-white">
+        Documentation
+      </a>
+
+      <a
+        href="https://github.com/WojciechWKROPCE/letterize"
+        class="button button-white-border"
+      >
+        Github
+      </a>
+    </div>
+  </div>
+  <script>
+    var title = new Letterize({ targets: "h1" });
+    var titleAnime = anime
+      .timeline({
+        targets: title.listAll,
+        delay: anime.stagger(50),
+        duration: 2000,
+        loop: true
+      })
+      .add({
+        translateY: -20
+      })
+      .add({
+        translateY: 0
+      });
+  </script>
+</header>
+<section class="container-wide">
+  <h2>How it works</h2>
+  <div class="example">
+    <div class="example__left">
+      <pre><code>&lt;!-- Source --&gt;
+        
+&lt;div id="letterizeMe"&gt;Sample text&lt;/div&gt;
+
+&lt;script&gt;<br>  var obj = new Letterize({targets: "#letterizeMe"});<br>
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="example__right">
+      <pre><code>&lt;!-- Result --&gt;
+        
+&lt;div id="letterizeMe"&gt;
+  &lt;span&gt;S&lt;/span&gt;
+  &lt;span&gt;a&lt;/span&gt;
+  &lt;span&gt;m&lt;/span&gt;
+  &lt;span&gt;p&lt;/span&gt;
+  &lt;span&gt;l&lt;/span&gt;
+  &lt;span&gt;e&lt;/span&gt;
+  &lt;span&gt;&amp;nbsp;&lt;/span&gt;
+  &lt;span&gt;t&lt;/span&gt;
+  &lt;span&gt;e&lt;/span&gt;
+  &lt;span&gt;x&lt;/span&gt;
+  &lt;span&gt;t&lt;/span&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;<br>  // Some parameters
+  obj.targets; // [div#letterizeMe]
+  obj.list; // [[span,span,span, ... ]]
+  obj.listAll; // [span,span,span, ... ]<br>
+&lt;/script&gt;</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="container-wide">
+  <h2>Multiple targets</h2>
+  <div class="example">
+    <div class="example__left">
+      <pre><code>&lt;!-- Source --&gt;
+        
+&lt;h2&gt;This one&lt;/h2&gt;
+
+&lt;p&gt;Not this one&lt;/p&gt;
+
+&lt;h2&gt;And this&lt;/h2&gt;
+
+&lt;script&gt;<br>  var obj = new Letterize({targets: "h2"});<br>
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="example__right">
+      <pre><code>&lt;!-- Result --&gt;
+        
+&lt;h2&gt;
+  &lt;span&gt;T&lt;/span&gt;&lt;span&gt;h&lt;/span&gt;&lt;span&gt;i&lt;/span&gt;&lt;span&gt;s&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;o&lt;/span&gt;&lt;span&gt;n&lt;/span&gt;&lt;span&gt;e&lt;/span&gt;
+&lt;/h2&gt;
+
+&lt;p&gt;Not this one&lt;/p&gt;
+
+&lt;h2&gt;
+  &lt;span&gt;A&lt;/span&gt;&lt;span&gt;n&lt;/span&gt;&lt;span&gt;d&lt;/span&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;span&gt;t&lt;/span&gt;&lt;span&gt;h&lt;/span&gt;&lt;span&gt;i&lt;/span&gt;&lt;span&gt;s&lt;/span&gt;
+&lt;/h2&gt;
+
+
+&lt;script&gt;<br>  // Some parameters
+  obj.targets; // [h2,h2]
+  obj.list; // [[span,span,...],[span,span,...]]
+            // One array for each h2
+  obj.listAll; // [span,span,span, ... ]
+               // All spans from all h2<br>
+&lt;/script&gt;</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="container-wide">
+  <h2>Custom wrappers with classes</h2>
+  <div class="example">
+    <div class="example__left">
+      <pre><code>&lt;!-- Source --&gt;
+        
+&lt;div id="letterizeMe"&gt;Sample text&lt;/div&gt;
+
+&lt;script&gt;<br>
+  var obj = new Letterize({
+    targets: document.getElementById("letterizeMe"),
+    wrapper: "i",
+    className: "letter"
+  });
+  <br>
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="example__right">
+      <pre><code>&lt;!-- Result --&gt;
+        
+&lt;div id="letterizeMe"&gt;
+  &lt;i class="letter"&gt;S&lt;/i&gt;
+  &lt;i class="letter"&gt;a&lt;/i&gt;
+  &lt;i class="letter"&gt;m&lt;/i&gt;
+  &lt;i class="letter"&gt;p&lt;/i&gt;
+  &lt;i class="letter"&gt;l&lt;/i&gt;
+  &lt;i class="letter"&gt;e&lt;/i&gt;
+  &lt;i class="letter"&gt;&amp;nbsp;&lt;/i&gt;
+  &lt;i class="letter"&gt;t&lt;/i&gt;
+  &lt;i class="letter"&gt;e&lt;/i&gt;
+  &lt;i class="letter"&gt;x&lt;/i&gt;
+  &lt;i class="letter"&gt;t&lt;/i&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;<br>  // Some parameters
+  obj.targets; // [div#letterizeMe]
+  obj.list; // [[i.letter,i.letter, ... ]]
+  obj.listAll; // [i.letter,i.letter, ... ]
+  obj.wrapper; // "i"
+  obj.className; // "letter"<br>
+&lt;/script&gt;</code></pre>
+    </div>
+  </div>
+</section>
+<section class="container-full">
+  <div class="example">
+    <div class="example-left"></div>
+  </div>
+</section>
