@@ -33,13 +33,14 @@ body {
 
 .button {
   display: inline-block;
-  width: 200px;
+  min-width: 200px;
   line-height: 42px;
   text-transform: uppercase;
   text-decoration: none;
   font-size: 16px;
   margin-left: 4px;
   margin-right: 4px;
+  padding: 0 20px 0 20px;
 }
 
 .button:hover {
@@ -52,9 +53,14 @@ body {
 
 .button-white {
   border: 2px solid #fff;
-  color: #fff;
   background-color: #fff;
   color: #222;
+}
+
+.button-gray {
+  border: 2px solid #222;
+  color: #fff;
+  background-color: #222;
 }
 
 .button-white-border {
