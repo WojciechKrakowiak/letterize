@@ -1,5 +1,22 @@
 /*jshint esversion: 6 */
 
+"use strict";
+
+const getTargets = targets => {
+  if (
+    NodeList.prototype.isPrototypeOf(targets) ||
+    HTMLCollection.prototype.isPrototypeOf(targets) ||
+    Array.isArray(targets)
+  ) {
+    return targets;
+  } else if (HTMLElement.prototype.isPrototypeOf(targets)) {
+    return [targets];
+  } else if (typeof targets === "string") {
+    return document.querySelectorAll(targets);
+  }
+  return null;
+};
+
 const deconstructText = (node, wrapper, className) => {
   const text = node.textContent.trim();
   const textLength = text.length;
@@ -42,7 +59,7 @@ const deconstructObjects = (
       switch (nodeList[j].nodeType) {
         case 1:
           if (Array.prototype.indexOf.call(targets, nodeList[j]) === -1) {
-            // Check if current nodeList[j] wasn't deconstructed (it can happen if target node is in another target node).
+            // Check if current nodeList[j] wasn't deconstructed (it can happen if a target node is in another target node).
             deconstructObjects(
               targets,
               nodeList[j],
@@ -67,61 +84,56 @@ const deconstructObjects = (
 
 export default class Letterize {
   constructor(params = {}) {
-    if (
-      NodeList.prototype.isPrototypeOf(params.targets) ||
-      HTMLCollection.prototype.isPrototypeOf(params.targets) ||
-      Array.isArray(params.targets)
-    ) {
-      this.targets = params.targets;
-    } else if (HTMLElement.prototype.isPrototypeOf(params.targets)) {
-      this.targets = [params.targets];
-    } else if (typeof params.targets === "string") {
-      this.targets = document.querySelectorAll(params.targets);
-    }
+    const targets = getTargets(params.targets);
 
-    const targetsLength = this.targets.length;
-
-    if (!this.targets.length) {
+    if (!targets || !targets.length) {
       console.error(
         `Letterize: targets '${this.targets}' not found or not specified`
       );
       return false;
     }
 
+    const targetsLength = targets.length;
+
     Letterize.numInstances = (Letterize.numInstances || 0) + 1;
-    this.wrapper = params.wrapper || "span";
-    this.className = params.className;
-    this.id = Letterize.numInstances;
-    this.list = [];
-    this.listAll = [];
+    const wrapper = params.wrapper || "span";
+    const className = params.className;
+    const id = Letterize.numInstances;
+    const list = [];
+    const listAll = [];
 
     for (let i = 0; i < targetsLength; i++) {
-      this.list[i] = [];
+      list[i] = [];
       deconstructObjects(
-        this.targets,
-        this.targets[i],
-        this.wrapper,
-        this.className,
-        this.list,
-        this.listAll,
+        targets,
+        targets[i],
+        wrapper,
+        className,
+        list,
+        listAll,
         i,
-        this.id
+        id
       );
     }
+
+    this.getWrapper = () => wrapper;
+    this.getTargets = () => targets;
+    this.list = () => list;
+    this.listAll = () => listAll;
+    this.getClassName = () => className;
   }
 
   deletterize() {
-    const listLength = this.listAll.length;
+    const listLength = this.listAll().length;
     for (let i = 0; i < listLength; i++) {
-      this.listAll[i].before(...this.listAll[i].childNodes);
-      this.listAll[i].remove();
+      this.listAll()[i].before(...this.listAll()[i].childNodes);
+      this.listAll()[i].remove();
     }
-    this.targets = undefined;
-    this.wrapper = undefined;
-    this.className = undefined;
+    this.getWrapper = undefined;
+    this.getTargets = undefined;
     this.list = undefined;
     this.listAll = undefined;
-    this.id = undefined;
+    this.getClassName = undefined;
     this.deletterize = undefined;
   }
 }

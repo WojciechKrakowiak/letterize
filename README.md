@@ -2,6 +2,8 @@
 
 A javascript front-end library for wrapping single letters into HTML nodes (i.e. `<span></span>`). Made to make text animations easier and simplify letter by letter animation with libraries like [Anime.js](https://github.com/juliangarnier/anime/).
 
+Visit [letterizejs.com](http://letterizejs.com) and checkout some [animated examples](http://letterizejs.com/examples).
+
 ## Installation
 
 Download /lib/letterize.min.js file into your project and include it in your HTML document:
@@ -58,25 +60,20 @@ _example:_
 className: "letter",
 ```
 
-## Object properties
-
-`Letterize.targets` _(Array, NodeList, HTMLCollection, HTMLElement, String)_ – returns an array of targets
-
-`Letterize.wrapper` _(String)_ – returns a name of wrapper option
-
-`Letterize.className` _String_ – returns a class name set on letters wrappers
-
-`Letterize.id` _Integer_ – returns an id of the instance of Letterize class
-
-`Letterize.list` _Array_ – returns an array of arrays. Each of inner arrays corresponds to each target element and contains all wrapper elements with letters. It can be used to animate letters in each target simultaneously.
-
-`Letterize.listAll` _Array_ – returns an array of all wrapper elements with letters without any division. Usefor for animating all targets one after another, or for other operations made on all letters.
-
 ## Object methods
 
 `Letterize.deletterize()` – Removes all wrapper elements created in initialization and sets all properties to undefined.
 
+`Letterize.getTargets()` _(Array, NodeList, HTMLCollection, HTMLElement, String)_ – returns an array of targets
+
+`Letterize.getWrapper()` _(String)_ – returns a name of letters' wrapper node. (i.e. "span")
+
+`Letterize.getClassName()` _String_ – returns a class name set on letters' wrappers
+
+`Letterize.list()` _Array_ – returns an array of arrays. Each of inner arrays corresponds to each target element and contains all wrapper elements with letters. It can be used to animate letters in each target simultaneously.
+
+`Letterize.listAll()` _Array_ – returns an array of all wrapper elements with letters without any division. Usefor for animating all targets one after another, or for other operations made on all letters.
+
 ## TODOs
 
-- Provide some examples with "list" and "listAll" properties
-- Provide some use cases (i.e. with anime.js library)
+- Get feedback, improve, share :wink:
