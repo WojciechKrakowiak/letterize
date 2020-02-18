@@ -62,8 +62,6 @@ className: "letter",
 
 ## Object methods
 
-`Letterize.deletterize()` – Removes all wrapper elements created in initialization and sets all properties to undefined.
-
 `Letterize.getTargets()` _(Array, NodeList, HTMLCollection, HTMLElement, String)_ – returns an array of targets
 
 `Letterize.getWrapper()` _(String)_ – returns a name of letters' wrapper node. (i.e. "span")
@@ -73,6 +71,8 @@ className: "letter",
 `Letterize.list()` _Array_ – returns an array of arrays. Each of inner arrays corresponds to each target element and contains all wrapper elements with letters. It can be used to animate letters in each target simultaneously.
 
 `Letterize.listAll()` _Array_ – returns an array of all wrapper elements with letters without any division. Usefor for animating all targets one after another, or for other operations made on all letters.
+
+`Letterize.deletterize()` – Removes all wrapper elements created in initialization and sets all properties to undefined.
 
 ## TODOs
 
