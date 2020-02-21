@@ -25,7 +25,7 @@ permalink: /
     var title = new Letterize({ targets: "h1" });
     var titleAnime = anime
       .timeline({
-        targets: title.listAll,
+        targets: title.listAll(),
         delay: anime.stagger(50),
         duration: 2000,
         loop: true
@@ -67,10 +67,10 @@ permalink: /
 &lt;/div&gt;
 
 
-&lt;script&gt;<br>  // Some parameters
-  obj.targets; // [div#letterizeMe]
-  obj.list; // [[span,span,span, ... ]]
-  obj.listAll; // [span,span,span, ... ]<br>
+&lt;script&gt;<br>  // Some methods
+  obj.getTargets(); // [div#letterizeMe]
+  obj.list(); // [[span,span,span, ... ]]
+  obj.listAll(); // [span,span,span, ... ]<br>
 &lt;/script&gt;</code></pre>
     </div>
   </div>
@@ -105,11 +105,11 @@ permalink: /
 &lt;/h2&gt;
 
 
-&lt;script&gt;<br>  // Some parameters
-  obj.targets; // [h2,h2]
-  obj.list; // [[span,span,...],[span,span,...]]
+&lt;script&gt;<br>  // Some methods
+  obj.getTargets(); // [h2,h2]
+  obj.list(); // [[span,span,...],[span,span,...]]
             // One array for each h2
-  obj.listAll; // [span,span,span, ... ]
+  obj.listAll(); // [span,span,span, ... ]
                // All spans from all h2<br>
 &lt;/script&gt;</code></pre>
     </div>
@@ -151,12 +151,12 @@ permalink: /
 &lt;/div&gt;
 
 
-&lt;script&gt;<br>  // Some parameters
-  obj.targets; // [div#letterizeMe]
-  obj.list; // [[i.letter,i.letter, ... ]]
-  obj.listAll; // [i.letter,i.letter, ... ]
-  obj.wrapper; // "i"
-  obj.className; // "letter"<br>
+&lt;script&gt;<br>  // Some methods
+  obj.getTargets(); // [div#letterizeMe]
+  obj.list(); // [[i.letter,i.letter, ... ]]
+  obj.listAll(); // [i.letter,i.letter, ... ]
+  obj.getWrapper(); // "i"
+  obj.getClassName(); // "letter"<br>
 &lt;/script&gt;</code></pre>
     </div>
   </div>

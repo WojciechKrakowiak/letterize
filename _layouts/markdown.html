@@ -66,14 +66,14 @@
       var buttons = new Letterize({
         targets: ".button"
       });
-      var buttonsLength = buttons.targets.length;
+      var buttonsLength = buttons.getTargets().length;
       for (var i = 0; i < buttonsLength; i++) {
           ( function(){
           var n = i;
           var animation;
-          buttons.targets[n].addEventListener("mouseover", function() {
+          buttons.getTargets()[n].addEventListener("mouseover", function() {
             animation = anime({
-              targets: buttons.list[n],
+              targets: buttons.list()[n],
               translateX: function() { return anime.random(-1, 1)},
               translateY: function() { return anime.random(-1, 1)},
               duration: function() { return anime.random(10, 50)},
@@ -84,10 +84,10 @@
 
             
           });
-          buttons.targets[n].addEventListener("mouseleave", function() {
-              anime.remove(buttons.list[n]);
+          buttons.getTargets()[n].addEventListener("mouseleave", function() {
+              anime.remove(buttons.list()[n]);
               animation = anime({
-                targets: buttons.list[n],
+                targets: buttons.list()[n],
                 translateX: 0,
                 translateY: 0,
                 duration: 0,
