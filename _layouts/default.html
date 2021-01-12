@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css?family=Khula:800&display=swap&subset=latin-ext"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/gh/WojciechWKROPCE/letterize-js@latest/lib/letterize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/letterizejs@2.0.1/lib/letterize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
    <script src="{{ site.baseurl }}/assets/js/highlight.pack.js"></script>
    <script>hljs.initHighlightingOnLoad();</script>
@@ -33,14 +33,14 @@
       var buttons = new Letterize({
         targets: ".button"
       });
-      var buttonsLength = buttons.getTargets().length;
+      var buttonsLength = buttons.getTargets.length;
       for (var i = 0; i < buttonsLength; i++) {
           ( function(){
           var n = i;
           var animation;
-          buttons.getTargets()[n].addEventListener("mouseover", function() {
+          buttons.getTargets[n].addEventListener("mouseover", function() {
             animation = anime({
-              targets: buttons.list()[n],
+              targets: buttons.list[n],
               translateX: function() { return anime.random(-1, 1)},
               translateY: function() { return anime.random(-1, 1)},
               duration: function() { return anime.random(10, 50)},
@@ -51,10 +51,10 @@
 
             
           });
-          buttons.getTargets()[n].addEventListener("mouseleave", function() {
-              anime.remove(buttons.list()[n]);
+          buttons.getTargets[n].addEventListener("mouseleave", function() {
+              anime.remove(buttons.list[n]);
               animation = anime({
-                targets: buttons.list()[n],
+                targets: buttons.list[n],
                 translateX: 0,
                 translateY: 0,
                 duration: 0,

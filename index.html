@@ -25,7 +25,7 @@ permalink: /
     var title = new Letterize({ targets: "h1" });
     var titleAnime = anime
       .timeline({
-        targets: title.listAll(),
+        targets: title.listAll,
         delay: anime.stagger(50),
         duration: 2000,
         loop: true
@@ -46,7 +46,7 @@ permalink: /
         
 &lt;div id="letterizeMe"&gt;Sample text&lt;/div&gt;
 
-&lt;script&gt;<br>  var obj = new Letterize({targets: "#letterizeMe"});<br>
+&lt;script&gt;<br>  const obj = new Letterize({targets: "#letterizeMe"});<br>
 &lt;/script&gt;</code></pre>
     </div>
     <div class="example__right">
@@ -67,10 +67,10 @@ permalink: /
 &lt;/div&gt;
 
 
-&lt;script&gt;<br>  // Some methods
-  obj.getTargets(); // [div#letterizeMe]
-  obj.list(); // [[span,span,span, ... ]]
-  obj.listAll(); // [span,span,span, ... ]<br>
+&lt;script&gt;<br>  // Read-only properties
+  obj.targets; // [div#letterizeMe]
+  obj.list; // [[span,span,span, ... ]]
+  obj.listAll; // [span,span,span, ... ]<br>
 &lt;/script&gt;</code></pre>
     </div>
   </div>
@@ -88,7 +88,7 @@ permalink: /
 
 &lt;h2&gt;And this&lt;/h2&gt;
 
-&lt;script&gt;<br>  var obj = new Letterize({targets: "h2"});<br>
+&lt;script&gt;<br>  const obj = new Letterize({targets: "h2"});<br>
 &lt;/script&gt;</code></pre>
     </div>
     <div class="example__right">
@@ -105,11 +105,11 @@ permalink: /
 &lt;/h2&gt;
 
 
-&lt;script&gt;<br>  // Some methods
-  obj.getTargets(); // [h2,h2]
-  obj.list(); // [[span,span,...],[span,span,...]]
+&lt;script&gt;<br>  // Read-only properties
+  obj.targets; // [h2,h2]
+  obj.list; // [[span,span,...],[span,span,...]]
             // One array for each h2
-  obj.listAll(); // [span,span,span, ... ]
+  obj.listAll; // [span,span,span, ... ]
                // All spans from all h2<br>
 &lt;/script&gt;</code></pre>
     </div>
@@ -125,7 +125,7 @@ permalink: /
 &lt;div id="letterizeMe"&gt;Sample text&lt;/div&gt;
 
 &lt;script&gt;<br>
-  var obj = new Letterize({
+  const obj = new Letterize({
     targets: document.getElementById("letterizeMe"),
     wrapper: "i",
     className: "letter"
@@ -151,12 +151,12 @@ permalink: /
 &lt;/div&gt;
 
 
-&lt;script&gt;<br>  // Some methods
-  obj.getTargets(); // [div#letterizeMe]
-  obj.list(); // [[i.letter,i.letter, ... ]]
-  obj.listAll(); // [i.letter,i.letter, ... ]
-  obj.getWrapper(); // "i"
-  obj.getClassName(); // "letter"<br>
+&lt;script&gt;<br>  // Read-only properties
+  obj.targets; // [div#letterizeMe]
+  obj.list; // [[i.letter,i.letter, ... ]]
+  obj.listAll; // [i.letter,i.letter, ... ]
+  obj.wrapper; // "i"
+  obj.className; // "letter"<br>
 &lt;/script&gt;</code></pre>
     </div>
   </div>
