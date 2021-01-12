@@ -2,14 +2,23 @@
 
 "use strict";
 
-const getTargets = targets => {
+type Targets = NodeList | HTMLCollection | HTMLElement[] | HTMLElement | string
+
+interface Params {
+  targets?: Targets
+  wrapper?: string
+  className?: string
+
+}
+
+const getTargets = (targets: Targets) => {
   if (
-    NodeList.prototype.isPrototypeOf(targets) ||
-    HTMLCollection.prototype.isPrototypeOf(targets) ||
+      targets instanceof NodeList ||
+    targets instanceof HTMLCollection ||
     Array.isArray(targets)
   ) {
     return targets;
-  } else if (HTMLElement.prototype.isPrototypeOf(targets)) {
+  } else if (targets instanceof HTMLElement) {
     return [targets];
   } else if (typeof targets === "string") {
     return document.querySelectorAll(targets);
@@ -17,7 +26,7 @@ const getTargets = targets => {
   return null;
 };
 
-const deconstructText = (node, wrapper, className) => {
+const deconstructText = (node: HTMLElement, wrapper: string, className: string) => {
   const text = node.textContent.trim();
   const textLength = text.length;
   const list = [];
@@ -83,14 +92,38 @@ const deconstructObjects = (
 };
 
 export default class Letterize {
-  constructor(params = {}) {
-    const targets = getTargets(params.targets);
+  get listAll(): Element[] {
+    return this._listAll;
+  }
+  get list(): Element[][] {
+    return this._list;
+  }
+  get targets(): Targets {
+    return this._targets;
+  }
+  get className(): string {
+    return this._className;
+  }
+  get wrapper(): string {
+    return this._wrapper;
+  }
+
+  static numInstances: number
+  private _wrapper: string
+  private _className: string
+  private _targets: Targets
+  private _list: Element[][]
+  private _listAll: Element[]
+
+
+  constructor(params: Params = {}) {
+    const targets: Targets = getTargets(params.targets);
 
     if (!targets || !targets.length) {
       console.error(
-        `Letterize: targets '${this.targets}' not found or not specified`
+        `Letterize: targets '${targets}' not found or not specified`
       );
-      return false;
+      return;
     }
 
     const targetsLength = targets.length;
@@ -116,24 +149,24 @@ export default class Letterize {
       );
     }
 
-    this.getWrapper = () => wrapper;
-    this.getTargets = () => targets;
-    this.list = () => list;
-    this.listAll = () => listAll;
-    this.getClassName = () => className;
+    this._wrapper = wrapper;
+    this._targets = targets;
+    this._list = list;
+    this._listAll = listAll;
+    this._className = className;
   }
 
   deletterize() {
-    const listLength = this.listAll().length;
+    const listLength = this.listAll.length;
     for (let i = 0; i < listLength; i++) {
-      this.listAll()[i].before(...this.listAll()[i].childNodes);
-      this.listAll()[i].remove();
+      this.listAll[i].before(...Array.from(this.listAll[i].childNodes));
+      this.listAll[i].remove();
     }
-    this.getWrapper = undefined;
-    this.getTargets = undefined;
-    this.list = undefined;
-    this.listAll = undefined;
-    this.getClassName = undefined;
+    this._wrapper = undefined;
+    this._targets = undefined;
+    this._list = undefined;
+    this._listAll = undefined;
+    this._className = undefined;
     this.deletterize = undefined;
   }
 }

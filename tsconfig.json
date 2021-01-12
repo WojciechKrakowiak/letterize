@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "lib",
+    "outDir": "lib",
+    "rootDir": "src",
+    "isolatedModules": false,
+    "target": "es6"
+  },
+  "files": ["src/letterize.ts"]
+}
