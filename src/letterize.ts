@@ -5,7 +5,7 @@
 type Targets = NodeList | HTMLCollection | HTMLElement[] | HTMLElement | string
 
 interface Params {
-  targets?: Targets
+  targets: Targets
   wrapper?: string
   className?: string
 
@@ -116,7 +116,7 @@ export default class Letterize {
   private _listAll: Element[]
 
 
-  constructor(params: Params = {}) {
+  constructor(params: Params) {
     const targets: Targets = getTargets(params.targets);
 
     if (!targets || !targets.length) {

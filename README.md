@@ -25,7 +25,7 @@ Download /lib/letterize.min.js file into your project and include it in your HTM
 or use cdn version:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/WojciechWKROPCE/letterize-js/lib/letterize.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/letterizejs"></script>
 ```
 
 ## Usage

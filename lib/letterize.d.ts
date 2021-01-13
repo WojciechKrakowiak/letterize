@@ -1,6 +1,6 @@
 declare type Targets = NodeList | HTMLCollection | HTMLElement[] | HTMLElement | string;
 interface Params {
-    targets?: Targets;
+    targets: Targets;
     wrapper?: string;
     className?: string;
 }
@@ -16,7 +16,7 @@ export default class Letterize {
     private _targets;
     private _list;
     private _listAll;
-    constructor(params?: Params);
+    constructor(params: Params);
     deletterize(): void;
 }
 export {};
