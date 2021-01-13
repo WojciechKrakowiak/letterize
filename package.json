@@ -1,6 +1,6 @@
 {
   "name": "letterizejs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./lib/letterize.js",
   "types": "./lib/letterize.d.ts",
   "description": "Wrap single letters in HTML nodes.",
