@@ -1,3 +1,4 @@
-url: https://wojciechkrakowiak.github.io/
-baseurl: letterize/
+domain: wojciechkrakowiak.github.io
+url: https://wojciechkrakowiak.github.io
+baseurl: /letterize/
 title: 'Letterize.js' # the name of your site, e.g. ACME Corp.
